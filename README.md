@@ -1,4 +1,5 @@
 # MDLProj
+<<<<<<< HEAD
 Progetto universitario per ML e DL
 ## Versioni richieste:
 * Anaconda
