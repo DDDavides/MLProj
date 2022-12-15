@@ -69,13 +69,13 @@
       \vspace{15mm}
       {\HUGE \@titolo} \\
       \vspace{15mm}
-      \begin{table}[h!]
+      {\begin{table}[h!]
       \centering
           \begin{tabular}{ccc}
                \textbf{\@autoreprimo} & \textbf{\@autoresecondo} & \textbf{\@autoreterzo} \\
-                Matricola \@matricolaprima & Matricola \@matricolaseconda & Matricola \@matricolaterza \\ 
+                Matricola \@matricolaprima & Matricola \@matricolaseconda & Matricola \@matricolaterza
           \end{tabular}
-      \end{table}
+      \end{table}}
       \vspace{7mm}
       \vfill
       {\large \today} \\
@@ -88,11 +88,11 @@
 
 % Comandi riguardanti la generazione di indici
 \newcommand{\generaIndice}{
-	%\fancyhead[L]{\textbf{\rightmark}}
-	\newpage
-	\tableofcontents
-	\clearpage
-	%\fancyhead[L]{\textbf{\leftmark}}
+   %\fancyhead[L]{\textbf{\rightmark}}
+   \newpage
+   \tableofcontents
+   \clearpage
+   %\fancyhead[L]{\textbf{\leftmark}}
 }
 \newcommand{\generaIndiceTabelle}{\newpage \listoftables}
 \newcommand{\generaIndiceFigure}{\newpage \listoffigures}
