@@ -2,6 +2,7 @@ from sklearn.metrics import classification_report
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def encode(x):
     if x == 0:
@@ -58,18 +59,28 @@ features = ['HomeTeam', 'AwayTeam',
             '5_HTHW_rate', '5_ATAW_rate']
 
 
-trn_ssn = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015]
-tst_ssn = [2016,2017,2018]
+trn_ssn = [ 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 ]
+tst_ssn = [ 2016, 2017, 2018 ]
 
 trn_ssn_len = len(trn_ssn)
 tst_ssn_len = len(tst_ssn)
 
 test_size = float(tst_ssn_len) / (tst_ssn_len + trn_ssn_len)
 
-
-
 def load_data():
-    data = pd.read_csv('./input/dataset.csv')
+    return pd.read_csv('./input/input.csv')
+
+def create_XY(data):
     X = pd.get_dummies(data[features])
     y = data[['FTR']].to_numpy().ravel().reshape(-1, 1)
     return X, y
+
+# and in a more understandable and graphical form
+def plot_corr(df, size=10):
+    corr = df.corr()
+    _, ax = plt.subplots(figsize=(size, size))
+    ax.matshow(corr, cmap="magma")
+    ax.set_facecolor("#00000000")
+
+    plt.xticks(range(len(corr.columns)), corr.columns, rotation = 90);
+    plt.yticks(range(len(corr.columns)), corr.columns);
