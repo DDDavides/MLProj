@@ -5,7 +5,7 @@
 \renewcommand{\arraystretch}{1.2}
 % --- INIZIO dati relativi al template TesiDiaUniroma3
 % dati obbligatori, necessari al frontespizio
-\titolo{Predizione risultati di partite di calcio}
+\titolo{Predizione risultati di partite di calcio mediante tecniche di Machine Learning e Deep Learning}
 \autoreprimo{Davide Galletti}
 \matricolaprima{533152}
 
@@ -23,6 +23,7 @@
 \usepackage{amsmath}	% per ``cases'' environment
 \usepackage{makecell}
 % --- FINE riachiamo di pacchetti di utilità
+\usepackage{import}
 
 \renewcommand\theadalign{bc}
 \renewcommand\theadfont{\ttfamily}
@@ -36,11 +37,13 @@
 \generaIndiceFigure
 
 % ----- Pagine di tesi, numerate in arabo (1,2,3,4,...) (obbligatorio)
-\mainmatter
+% \mainmatter
 % il comando ``capitolo'' ha come parametri:
 % 1) il titolo del capitolo
 % 2) il nome del file tex (senza estensione) che contiene il capitolo. Tale nome \`e usato anche come label del capitolo
-\capitolo{Sezione 1}{sez1}
+\sezione{Obiettivo}{obiettivo}
+\sezione{Dataset e features}{features}
+\sezione{Architetture}{architetture}
 
 % Bibliografia con BibTeX (obbligatoria)
 % Non si deve specificare lo stile della bibliografia
