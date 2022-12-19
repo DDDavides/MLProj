@@ -1,3 +1,33 @@
-\subsection{Dataset di partenza}
+% \subsection{Dataset di partenza}
+Il dataset è stato realizzato analizzando i dati corrispondenti ai risultati delle partite di Premier League [3]
+dalla stagione 2008/2009 alla stagione 2018/2019.
+Successivamente il lavoro è stato svolto con un dataset caratterizzato da 4180 righe x 78 colonne, 
+36 squadre e 40 features (Date, HomeTeam, AwayTeam, FTHG, FTAG, FTR, HTAG, 
+B365A, B365D, B365H, BSA, BSD, BSH, BWA, BWD, BWH, GBA, GBD, GBH, IWD, IWD, IWH, LBA, LBD, LBH, PSA, PSD, PSH, SBA,
+SBD, SBH, SJA, SJD, SJH, VCA, VCD, VCH, WHA, WHD, WHH), poi utilizzate per la manipolazione ed estrazione di 38 features (refer appendix 2).
 
-\subsection{Selezione delle features}
+Per ogni partita abbiamo accesso al country id, league id, season, stage, date, match api id,
+home team id, away team id, home team goal, away team goal, home player X positions,
+away player X positions, home player Y positions, away player Y positions, home player ids,
+away player ids e le quote delle varie scommesse (B365A, B365D, B365H, BSA, BSD, BSH, BWA, BWD, . . . .)
+
+Per ogni squadra abbiamo accesso al team id, team name, FIFA id, FIFA data 
+and FIFA statistics (che includono build up play speed, build up play dribbling, etc.).
+Poiché quest'ultimi dati erano inconsistenti e senza alcuni valori, 
+sono stati utilizzati per definire il ranking ELO e la correlazione.
+
+A conclusione del progetto, le features che sono state utilizzate sono 24: Home team, away team, 
+home team elo score, away team elo score, home team days since last match, 
+away team days since last match, home team win rate, away team win rate, 
+away team draw rate, home team draw rate, Last 7 home team win rate, 
+Last 7 home team lose rate, last 7 home team draw rate, Last 7 away team win rate, 
+Last 7 away team lose rate, last 7 away team draw rate, Last 12 home team win rate, 
+Last 12 home team lose rate, last 12 home team draw rate, Last 12 away team win rate, 
+Last 12 away team lose rate, last 12 away team draw rate, last 5 home team home win 
+and last 5 away team away win.
+
+I dati sulla stagione corrente (penso 2018/2019) sono stati soggetti ad augmentazione,
+poiché per ogni partita sono state calcolate quante vittorie, sconfitte e pareggi 
+le squadre hanno conseguito fino alla partita in questione, così come la loro serie di vittorie o sconfitte.
+
+% \subsection{Selezione delle features}
