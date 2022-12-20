@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{TesiDiaUniroma3}[2008/02/13 v1.0 Tesi - DIA-Uniroma3]
 
-\LoadClass[a4paper,11pt,oneside,italian]{memoir}
+\LoadClass[a4paper,11pt,oneside,italian]{article}
 
 % Si utilizza la sillabazione italiana
 \RequirePackage[italian]{babel}
@@ -15,12 +15,12 @@
 % interlinea
 \linespread{1}
 % margini (la dimensione del blocco di testo viene regolata di conseguenza)
-\setlrmarginsandblock{3.5cm}{3cm}{*}
+% \setlrmarginsandblock{3.5cm}{3cm}{*}
 % profondità dell'indice (settato per stampare fino alle sottosezioni)
 \setcounter{tocdepth}{2}
 % numera parti, capitoli, sezioni, sottosezioni e sotto-sottosezioni
-\maxsecnumdepth{subsubsection}
-\setsecnumdepth{subsubsection}
+% \maxsecnumdepth{subsubsection}
+% \setsecnumdepth{subsubsection}
 
 % header personalizzati
 \let\footruleskip\relax % for compatibility of memoir and fancyhdr
@@ -84,15 +84,15 @@
 }
 
 % Comandi riguardanti l'inserimento di capitoli
-\newcommand{\capitolo}[2]{\newpage \chapter{#1}\label{cap:#2}\input{#2}}
+\newcommand{\sezione}[2]{\section{#1}\label{sez:#2}\input{#2}}
 
 % Comandi riguardanti la generazione di indici
 \newcommand{\generaIndice}{
-   %\fancyhead[L]{\textbf{\rightmark}}
-   \newpage
-   \tableofcontents
-   \clearpage
-   %\fancyhead[L]{\textbf{\leftmark}}
+	%\fancyhead[L]{\textbf{\rightmark}}
+	\newpage
+	\tableofcontents
+	\clearpage
+	%\fancyhead[L]{\textbf{\leftmark}}
 }
 \newcommand{\generaIndiceTabelle}{\newpage \listoftables}
 \newcommand{\generaIndiceFigure}{\newpage \listoffigures}
@@ -100,4 +100,4 @@
 % Bibliografia in ordine alfabetico
 \let \OldBib \bibliography
 \renewcommand{\bibliography}[1]{\newpage \markboth{Bibliografia}{Bibliografia} \OldBib{#1}}
-\bibliographystyle{alpha}
+\bibliographystyle{abbrv}
