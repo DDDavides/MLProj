@@ -11,7 +11,13 @@ def encode(x):
         v = [0,1,0]
     elif x == 2:
         v = [0,0,1]
-    return np.array(v)
+    return v
+
+def enc_list(l):
+    result = []
+    for i in l:
+        result.append(encode(i))
+    return np.array(result)
 
 def reshape_to_inputshape(a_prev, season):
     # e.g. (a_prev=x_train, season=trn_ssn)
@@ -25,13 +31,13 @@ def report1(model, x, y, name, encoder):
     y_predm = np.asarray(y_pred)
     y_predm = np.argmax(y_predm, axis=1)
     
-    vec = np.vectorize(encode, signature="() -> (3)")
+    #vec = np.vectorize(encode, signature="() -> (3)")
 
-    y_predm = vec(y_predm.reshape(-1))
+    y_predm = enc_list(y_predm.reshape(-1))
     y_predm = np.array(y_predm)
 
     ym = np.argmax(y, axis=1)
-    ym = vec(ym.reshape(-1))
+    ym = enc_list(ym.reshape(-1))
     ym = np.array(ym)
 
     # Inverse One-hot transform
@@ -49,13 +55,13 @@ def report2(model, x, y, name, encoder):
     y_predm = np.asarray(y_pred)
     y_predm = np.argmax(y_predm, axis=2)
     
-    vec = np.vectorize(encode, signature="() -> (3)")
+    #vec = np.vectorize(encode, signature="() -> (3)")
 
-    y_predm = vec(y_predm.reshape(-1))
+    y_predm = enc_list(y_predm.reshape(-1))
     y_predm = np.array(y_predm)
 
     ym = np.argmax(y, axis=2)
-    ym = vec(ym.reshape(-1))
+    ym = enc_list(ym.reshape(-1))
     ym = np.array(ym)
 
     # Inverse One-hot transform
