@@ -132,3 +132,14 @@ dmypy.json
 
 # Ignore models directory
 models/*
+
+# per la tesina
+*.log
+*.lof
+*.loc
+*.aux
+*.blg
+*.bbl
+*.out
+*.pdf
+*.synctex.gz
