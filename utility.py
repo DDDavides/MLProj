@@ -13,12 +13,6 @@ def encode(x):
         v = [0,0,1]
     return np.array(v)
 
-# def encode_list(l):
-#     r = []
-#     for i in l:
-#         r.append(encode(i))
-#     return r
-
 def reshape_to_inputshape(a_prev, season):
     # e.g. (a_prev=x_train, season=trn_ssn)
     totalMatches = len(season)*38
@@ -26,17 +20,41 @@ def reshape_to_inputshape(a_prev, season):
     prev_f = a_prev.shape[1]
     return np.reshape(a_prev, (totalMatches, input_step, prev_f))
 
-def report(model, x, y, name, encoder):
+def report1(model, x, y, name, encoder):
     y_pred = model.predict(x)
     y_predm = np.asarray(y_pred)
     y_predm = np.argmax(y_predm, axis=1)
-
+    
     vec = np.vectorize(encode, signature="() -> (3)")
 
     y_predm = vec(y_predm.reshape(-1))
     y_predm = np.array(y_predm)
 
     ym = np.argmax(y, axis=1)
+    ym = vec(ym.reshape(-1))
+    ym = np.array(ym)
+
+    # Inverse One-hot transform
+    y_predm = encoder.inverse_transform(y_predm)
+    ym = encoder.inverse_transform(ym)
+
+    #Model Metrics 
+    print(f"{name.upper()} REPORT")
+    print(classification_report(ym, y_predm, digits=3))
+    print("--------------------------------------------------")
+
+
+def report2(model, x, y, name, encoder):
+    y_pred = model.predict(x)
+    y_predm = np.asarray(y_pred)
+    y_predm = np.argmax(y_predm, axis=2)
+    
+    vec = np.vectorize(encode, signature="() -> (3)")
+
+    y_predm = vec(y_predm.reshape(-1))
+    y_predm = np.array(y_predm)
+
+    ym = np.argmax(y, axis=2)
     ym = vec(ym.reshape(-1))
     ym = np.array(ym)
 
@@ -71,7 +89,7 @@ def load_data():
     return pd.read_csv('./input/input.csv')
 
 def create_XY(data):
-    X = pd.get_dummies(data[features])
+    X = pd.get_dummies(data[features]).to_numpy()
     y = data[['FTR']].to_numpy().ravel().reshape(-1, 1)
     return X, y
 
