@@ -1,33 +1,64 @@
 % \subsection{Dataset di partenza}
-Il dataset è stato realizzato analizzando i dati corrispondenti ai risultati delle partite di Premier League [3]
+Il dataset è stato realizzato analizzando i dati corrispondenti ai risultati delle partite di Premier League
 dalla stagione 2008/2009 alla stagione 2018/2019.
-Successivamente il lavoro è stato svolto con un dataset caratterizzato da 4180 righe x 78 colonne, 
-36 squadre e 40 features (Date, HomeTeam, AwayTeam, FTHG, FTAG, FTR, HTAG, 
-B365A, B365D, B365H, BSA, BSD, BSH, BWA, BWD, BWH, GBA, GBD, GBH, IWD, IWD, IWH, LBA, LBD, LBH, PSA, PSD, PSH, SBA,
-SBD, SBH, SJA, SJD, SJH, VCA, VCD, VCH, WHA, WHD, WHH), poi utilizzate per la manipolazione ed estrazione di 38 features (refer appendix 2).
+Successivamente, il lavoro è stato svolto con un dataset caratterizzato da 4180 righe x 78 colonne, 
+36 squadre e 40 features, poi utilizzate per la manipolazione ed estrazione di 38 features.
 
-Per ogni partita abbiamo accesso al country id, league id, season, stage, date, match api id,
+Ciascuna partita è caratterizzata dal \textit{country id, league id, season, stage, date, match api id,
 home team id, away team id, home team goal, away team goal, home player X positions,
 away player X positions, home player Y positions, away player Y positions, home player ids,
-away player ids e le quote delle varie scommesse (B365A, B365D, B365H, BSA, BSD, BSH, BWA, BWD, . . . .)
+away player ids} e le quote delle varie scommesse \textit{(B365A, B365D, B365H, BSA, BSD, BSH, BWA, BWD, . . . .)}
 
-Per ogni squadra abbiamo accesso al team id, team name, FIFA id, FIFA data 
-and FIFA statistics (che includono build up play speed, build up play dribbling, etc.).
+Mentre per ogni squadra si ha il \textit{team id, team name, FIFA id, FIFA data 
+and FIFA statistics} (che includono build up play speed, build up play dribbling, etc.).
 Poiché quest'ultimi dati erano inconsistenti e senza alcuni valori, 
-sono stati utilizzati per definire il ranking ELO e la correlazione.
+sono stati utilizzati per definire il ranking ELO (andamento complessivo di una squadra) e la correlazione. 
 
-A conclusione del progetto, le features che sono state utilizzate sono 24: Home team, away team, 
-home team elo score, away team elo score, home team days since last match, 
-away team days since last match, home team win rate, away team win rate, 
-away team draw rate, home team draw rate, Last 7 home team win rate, 
-Last 7 home team lose rate, last 7 home team draw rate, Last 7 away team win rate, 
-Last 7 away team lose rate, last 7 away team draw rate, Last 12 home team win rate, 
-Last 12 home team lose rate, last 12 home team draw rate, Last 12 away team win rate, 
-Last 12 away team lose rate, last 12 away team draw rate, last 5 home team home win 
-and last 5 away team away win.
+\begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{tesina/img/corr_feat.pdf}
+        \caption{Correlazioni tra tutte le features (regioni più chiare corrispondono a valori di correlazione maggiori)}
+\end{figure}
 
-I dati sulla stagione corrente (penso 2018/2019) sono stati soggetti ad augmentazione,
-poiché per ogni partita sono state calcolate quante vittorie, sconfitte e pareggi 
-le squadre hanno conseguito fino alla partita in questione, così come la loro serie di vittorie o sconfitte.
+\newpage
+A conclusione del progetto, sono state utilizzate 24 features: 
+\begin{table}[!h]
+\resizebox{\textwidth}{!}{%
+    \centering
+    \begin{tabular}{|c|c||c|c|}
+    \hline
+         Home team & HomeTeam & Last 7 home team win rate & 7\_HTW\_rate\\
+         \hline
+         Away team & AwayTeam & Last 7 home team lose rate & 7\_HTL\_rate \\
+         \hline
+         Home team ELO score & HTeamEloScore & Last 7 home team draw rate & 7\_HTD\_rate \\
+         \hline
+         Away team ELO score & ATeamEloScore & Last 7 away team win rate & 7\_ATW\_rate \\
+         \hline
+         Home team days since last match & HTdaysSinceLastMatch & Last 7 away team lose rate & 7\_ATL\_rate\\
+         \hline
+         Away team days since last match & ATdaysSinceLastMatch & Last 7 away team draw rate & 7\_ATD\_rate \\
+         \hline
+         Home team win rate & HTW\_rate & Last 12 home team win rate & 12\_HTW\_rate \\
+         \hline
+         Away team win rate & ATW\_rate & Last 12 home team lose rate & 12\_HTL\_rate \\
+         \hline
+         Home team draw rate & HTD\_rate & Last 12 home team draw rate & 12\_HTD\_rate \\
+         \hline
+         Away team draw rate & ATD\_rate & Last 12 away team win rate & 12\_ATW\_rate \\
+         \hline
+         Last 5 home team home win & 5\_HTHW\_rate & Last 12 away team lose rate & 12\_ATL\_rate\\
+         \hline
+         Last 5 away team away win & 5\_ATAW\_rate & Last 12 away team draw rate & 12\_ATD\_rate \\
+         \hline
+    \end{tabular}}
+    \caption{Features selezionate e la loro abbreviazione}
+    \label{tab:featAbbr}
+\end{table}
 
-% \subsection{Selezione delle features}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{tesina/img/corr_sel_feat.pdf}
+    \caption{Correlazione tra le features selezionate (regioni più chiare corrispondono a valori di correlazione maggiori)}
+    \label{fig:lstmColFeatures}
+\end{figure}

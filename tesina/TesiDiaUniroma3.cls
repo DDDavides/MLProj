@@ -22,16 +22,6 @@
 % \maxsecnumdepth{subsubsection}
 % \setsecnumdepth{subsubsection}
 
-% header personalizzati
-\let\footruleskip\relax % for compatibility of memoir and fancyhdr
-\let\rm\rmfamily        % for compatibility of memoir and blindtext (demo only)
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\addtolength{\headheight}{14pt}
-\fancyhead[R]{\textbf{\thepage}}
-\fancyhead[L]{\textbf{\leftmark}}
-
 % Autore 
 \newcommand{\@autoreprimo}{Autore 1}
 \newcommand{\@autoresecondo}{Autore 2}
@@ -104,11 +94,11 @@
 	%\fancyhead[L]{\textbf{\rightmark}}
 	\newpage
 	\tableofcontents
-	\clearpage
+	% \clearpage
 	%\fancyhead[L]{\textbf{\leftmark}}
 }
-\newcommand{\generaIndiceTabelle}{\newpage \listoftables}
-\newcommand{\generaIndiceFigure}{\newpage \listoffigures}
+\newcommand{\generaIndiceTabelle}{\listoftables}
+\newcommand{\generaIndiceFigure}{\listoffigures \newpage}
 
 % Bibliografia in ordine alfabetico
 \let \OldBib \bibliography
