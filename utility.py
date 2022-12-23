@@ -108,3 +108,7 @@ def plot_corr(df, size=10):
 
     plt.xticks(range(len(corr.columns)), corr.columns, rotation = 90);
     plt.yticks(range(len(corr.columns)), corr.columns);
+
+def reshape_features(input: np.ndarray):
+    arr = input.reshape(input.shape[0], input.shape[1], 1)
+    return arr
