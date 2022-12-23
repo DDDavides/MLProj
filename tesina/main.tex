@@ -5,7 +5,7 @@
 \renewcommand{\arraystretch}{1.2}
 % --- INIZIO dati relativi al template TesiDiaUniroma3
 % dati obbligatori, necessari al frontespizio
-\titolo{Predizione risultati di partite di calcio mediante tecniche di Machine Learning e Deep Learning}
+\titolo{Predizione risultati partite di calcio mediante tecniche di Machine Learning e Deep Learning}
 \autoreprimo{Davide Galletti}
 \matricolaprima{533152}
 
@@ -14,6 +14,8 @@
 
 \autoreterzo{Davide Molitierno}
 \matricolaterza{537969}
+
+\github{https://github.com/DDDavides/MDLProj}
 % --- FINE dati relativi al template TesiDiaUniroma3
 
 % --- INIZIO richiamo di pacchetti di utilità. Questi sono un esempio e non sono strettamente necessari al modello per la tesi.
@@ -22,11 +24,35 @@
 \usepackage{amsthm}	% per definizioni e teoremi
 \usepackage{amsmath}	% per ``cases'' environment
 \usepackage{makecell}
+% --- FINE riachiamo di pacchetti di utilità
+% \usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage[dvipsnames]{xcolor}
 
 \renewcommand\theadalign{bc}
 \renewcommand\theadfont{\ttfamily}
 \renewcommand\theadgape{\Gape[4pt]}
 \renewcommand\cellgape{\Gape[4pt]}
+
+\lstdefinestyle{report}{
+  columns=flexible,
+  % frameshape={}{y}{y}{}, % per rimuovere la linea vericale sulla sinistra `frameshape={}{}{}{}`
+  % frame=single,
+  xleftmargin=.2\textwidth, xrightmargin=.2\textwidth,
+  basicstyle = {\scriptsize \ttfamily},
+  showstringspaces=false,
+}
+
+\lstdefinestyle{arch}{
+  columns=flexible,
+  % frameshape={}{y}{y}{}, % per rimuovere la linea vericale sulla sinistra `frameshape={}{}{}{}`
+  % frame=single,
+  xleftmargin=.12\textwidth, xrightmargin=.12\textwidth,
+  basicstyle = {\scriptsize \ttfamily},
+  showstringspaces=false,
+}
 
 \begin{document}
 % ----- Pagine di fronespizio, numerate in romano (i,ii,iii,iv...) (obbligatorio)
@@ -41,7 +67,9 @@
 % 2) il nome del file tex (senza estensione) che contiene il capitolo. Tale nome \`e usato anche come label del capitolo
 \sezione{Obiettivo}{obiettivo}
 \sezione{Dataset e features}{features}
+% \newpage
 \sezione{Architetture}{architetture}
+\sezione{Prestazioni}{prestazioni}
 
 % Bibliografia con BibTeX (obbligatoria)
 % Non si deve specificare lo stile della bibliografia

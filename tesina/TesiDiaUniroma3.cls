@@ -22,16 +22,6 @@
 % \maxsecnumdepth{subsubsection}
 % \setsecnumdepth{subsubsection}
 
-% header personalizzati
-\let\footruleskip\relax % for compatibility of memoir and fancyhdr
-\let\rm\rmfamily        % for compatibility of memoir and blindtext (demo only)
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\addtolength{\headheight}{14pt}
-\fancyhead[R]{\textbf{\thepage}}
-\fancyhead[L]{\textbf{\leftmark}}
-
 % Autore 
 \newcommand{\@autoreprimo}{Autore 1}
 \newcommand{\@autoresecondo}{Autore 2}
@@ -43,9 +33,14 @@
 % Titolo
 \newcommand{\@titolo}{Titolo della tesi}
 \newcommand{\titolo}[1]{\renewcommand{\@titolo}{#1}}
+
 % Matricola 
 \newcommand{\@matricolaprima}{000000}
 \newcommand{\matricolaprima}[1]{\renewcommand{\@matricolaprima}{#1}}
+
+% Github
+\newcommand{\@github}{link github}
+\newcommand{\github}[1]{\renewcommand{\@github}{\href{#1}{#1}}}
 
 \newcommand{\@matricolaseconda}{000000}
 \newcommand{\matricolaseconda}[1]{\renewcommand{\@matricolaseconda}{#1}}
@@ -67,7 +62,7 @@
       \vspace{15mm}
       {\LARGE Progetto Machine Learning} \\
       \vspace{15mm}
-      {\HUGE \@titolo} \\
+      {\huge \@titolo} \\
       \vspace{15mm}
       {\begin{table}[h!]
       \centering
@@ -76,6 +71,14 @@
                 Matricola \@matricolaprima & Matricola \@matricolaseconda & Matricola \@matricolaterza
           \end{tabular}
       \end{table}}
+      \vspace{15mm}
+      {\begin{figure}[h]
+        \centering
+            \begin{tabular}{m{1cm}c}
+            \includegraphics[scale=0.01]{tesina/img/GitHub-logo.png} & \@github\\
+            \end{tabular}
+       \end{figure}
+      } \\
       \vspace{7mm}
       \vfill
       {\large \today} \\
@@ -91,11 +94,11 @@
 	%\fancyhead[L]{\textbf{\rightmark}}
 	\newpage
 	\tableofcontents
-	\clearpage
+	% \clearpage
 	%\fancyhead[L]{\textbf{\leftmark}}
 }
-\newcommand{\generaIndiceTabelle}{\newpage \listoftables}
-\newcommand{\generaIndiceFigure}{\newpage \listoffigures}
+\newcommand{\generaIndiceTabelle}{\listoftables}
+\newcommand{\generaIndiceFigure}{\listoffigures \newpage}
 
 % Bibliografia in ordine alfabetico
 \let \OldBib \bibliography
