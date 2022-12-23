@@ -1,8 +1,7 @@
-% \subsection{Dataset di partenza}
-Il dataset è stato realizzato analizzando i dati corrispondenti ai risultati delle partite di Premier League
-dalla stagione 2008/2009 alla stagione 2018/2019.
+Il dataset è stato realizzato analizzando i dati corrispondenti ai risultati delle partite di Premier League a partire
+dalla stagione 2008/2009 fino alla stagione 2018/2019.
 Successivamente, il lavoro è stato svolto con un dataset caratterizzato da 4180 righe x 78 colonne, 
-36 squadre e 40 features, poi utilizzate per la manipolazione ed estrazione di 38 features.
+derivanti da 36 squadre e 40 features, attraverso le quali sono state successivamente estratte ulteriori 38 features.
 
 Ciascuna partita è caratterizzata dal \textit{country id, league id, season, stage, date, match api id,
 home team id, away team id, home team goal, away team goal, home player X positions,
@@ -11,7 +10,7 @@ away player ids} e le quote delle varie scommesse \textit{(B365A, B365D, B365H, 
 
 Mentre per ogni squadra si ha il \textit{team id, team name, FIFA id, FIFA data 
 and FIFA statistics} (che includono build up play speed, build up play dribbling, etc.).
-Poiché quest'ultimi dati erano inconsistenti e senza alcuni valori, 
+Poiché quest'ultimi dati erano inconsistenti e alcuni privi di valore, 
 sono stati utilizzati per definire il ranking ELO (andamento complessivo di una squadra) e la correlazione. 
 
 \begin{figure}[h]
