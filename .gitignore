@@ -142,6 +142,6 @@ models/*
 *.lof
 *.loc
 *.out
-*.pdf
+main.pdf
 *.toc
 *.synctex.gz

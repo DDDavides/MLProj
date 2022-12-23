@@ -41,7 +41,7 @@ Per quanto riguarda i Random Forest sono stati inizialmente utilizzati solo due 
 
 \newpage
 \subsection{Rete neurale}
-Un'ulteriore tecnica di Machine Learning ha previsto l'uso di una rete neurale caratterizzata come segue:
+Un'ulteriore tecnica di Machine Learning ha previsto l'uso di una rete neurale con layer \textit{Fully Connected} con attivazione di tipo \textbf{\textit{relu}} (ad eccezione dell'ultimo con attivazione \textbf{\textit{softmax}}) e l'utilizzo di \textit{Dropout} caratterizzata come segue:
 % \newpage
 \begin{lstlisting}[style=arch]
 Model: "sequential_1"
@@ -91,11 +91,13 @@ weighted avg      0.482     0.531     0.472      1045
 \end{lstlisting}
 
 \subsection{Reti neurali ricorrenti}\label{sec:rnn}
-Per applicare l'uso delle architetture ricorrenti, in primo luogo è stato analizzato il dataset e, successivamente, è stato approfondito come i dati vengano ricevuti in input dall'LSTM utilizzata nel progetto di riferimento. Di conseguenza, sono stati decisi ed adottati due approcci differenti, accumunati dall'idea di dividere il dataset in sequenze di $n$ partite, dove $n$ è un parametro che è stato fissato a $10$: nel primo approccio questa suddivisione è effettuata sul dataset iniziale, mentre nel secondo su un dataset generato, partendo da quello iniziale, collezionando ed ordinando cronologicamente tutte le partite di ogni singola squadra, che sono state poi concatenate.
+Per applicare l'uso delle architetture ricorrenti, in primo luogo è stato analizzato il dataset e, successivamente, è stato approfondito come i dati vengano ricevuti in input dall'\textit{LSTM} utilizzata nel progetto di riferimento. Di conseguenza, sono stati decisi ed adottati due approcci differenti, accumunati dall'idea di dividere il dataset in sequenze di $n$ partite, dove $n$ è un parametro che è stato fissato a $10$: nel primo approccio questa suddivisione è effettuata sul dataset iniziale, mentre nel secondo su un dataset generato, partendo da quello iniziale, collezionando ed ordinando cronologicamente tutte le partite di ogni singola squadra, che sono state poi concatenate.
 
-Inoltre, a causa di tale eterogeneità nella rappresentazione dei dati nei due approcci, è stata introdotta una differenziazione anche relativamente alle architetture: nel primo caso il layer ricorrente agisce come una \textbf{sequence to sequence}, predicendo tutte le partite della sequenza, mentre nel secondo come una \textbf{sequence to vector} pronosticando esclusivamente il risultato dell'ultima in sequenza.
+Inoltre, a causa di tale eterogeneità nella rappresentazione dei dati nei due approcci, è stata introdotta una differenziazione anche relativamente alle architetture: nel primo caso il layer ricorrente agisce come una \textbf{\textit{sequence to sequence}}, predicendo tutte le partite della sequenza, mentre nel secondo come una \textbf{\textit{sequence to vector}} pronosticando esclusivamente il risultato dell'ultima in sequenza. 
 
-Infine, durante l'addestramento di ciascuna di queste architetture è stata introdotta la tecnica dell'\textbf{EarlyStopping} per far in modo che la fase di training si concludesse una volta terminato l'apprendimento della rete, onde così evitare fenomeni di \textbf{overfitting}.
+In generale per ciascuna di queste architetture è stato seguito il medesimo approccio per cui ad uno o più layer ricorrenti iniziali sono stati concatenati strati \textit{Fully Connected} intervallati da \textit{Dropout}.
+
+Infine, durante l'addestramento di ciascuna di queste architetture è stata introdotta la tecnica dell'\textbf{\textit{EarlyStopping}} per far in modo che la fase di training si concludesse una volta terminato l'apprendimento della rete, onde così evitare fenomeni di \textbf{\textit{overfitting}}.
 
 \subsubsection*{SimpleRNN}
 \begin{lstlisting}[style=arch]
@@ -195,9 +197,9 @@ TEST REPORT
  weighted avg       0.556    0.595     0.556       1140
 \end{lstlisting}
 
-Si è anche testata l'efficacia di più layer LSTM concatenati o parallelizzati, ma in entrambi i casi le prestazioni non sono migliorate significativamente. 
+Si è anche testata l'efficacia di più layer \textit{LSTM} concatenati o parallelizzati, ma in entrambi i casi le prestazioni non sono migliorate significativamente. 
 
-Successivamente, oltre agli approcci precedentemente accennati, poiché non hanno introdotto miglioramenti nelle prestazioni, si è pensato di verificare se fosse vantaggioso un differente approccio: i time steps, piuttosto che corrispondere a sequenze di $n$ partite, si potrebbero associare alla singola partita e farli coincidere a sequenze composte dalle features selezionate (vedi \cite{web:football_lstm}).
+Successivamente, oltre agli approcci precedentemente accennati, poiché non hanno introdotto miglioramenti nelle prestazioni, si è pensato di verificare se fosse vantaggioso un differente approccio: i \textit{time steps}, piuttosto che corrispondere a sequenze di $n$ partite, si potrebbero associare alla singola partita e farli coincidere a sequenze composte dalle features selezionate (vedi \cite{web:football_lstm}).
 
 Si noti che questo approccio è stato utilizzato per la successiva architettura:
 
@@ -335,7 +337,7 @@ TEST REPORT
 
 
 \subsubsection*{Bidirectional}
-Di seguito viene mostrata l'architettura Bidirectional utilizzata che, tuttavia, ha portato a pessime prestazioni, andando a overfittare sui dati di training. Questo comportamento è motivato dalla poca coerenza tra gli approcci adottati e l'architettura in questione.
+Di seguito viene mostrata l'architettura \textit{\textbf{Bidirectional}} utilizzata che, tuttavia, ha portato a pessime prestazioni, andando a \textit{overfittare} sui dati di training. Questo comportamento è motivato dalla poca coerenza tra gli approcci adottati e l'architettura in questione.
 \begin{lstlisting}[style=arch]
 Model: "sequential_4"
 _________________________________________________________________
@@ -386,7 +388,7 @@ TEST REPORT
 
 
 \subsubsection*{WaveNet}
-L'ultima architettura testata è la WaveNet\cite{DBLP:journals/corr/OordDZSVGKSK16}, che ci ha permesso di introdurre layer convolutivi (a sostituzione di quelli ricorrenti), layer di BatchNormalization e Pooling, che precedono gli ultimi strati Fully Connected.
+L'ultima architettura testata è la \textit{\textbf{WaveNet}}\cite{DBLP:journals/corr/OordDZSVGKSK16}, che ci ha permesso di introdurre layer convolutivi (a sostituzione di quelli ricorrenti), layer di \textit{\textbf{BatchNormalization}} e \textit{\textbf{Pooling}}, che precedono gli ultimi strati \textit{Fully Connected}.
 \begin{lstlisting}[style=arch]
 Model: "sequential"
 _________________________________________________________________

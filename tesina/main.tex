@@ -19,7 +19,14 @@
 % --- FINE dati relativi al template TesiDiaUniroma3
 
 % --- INIZIO richiamo di pacchetti di utilità. Questi sono un esempio e non sono strettamente necessari al modello per la tesi.
-\usepackage[plainpages=false]{hyperref}	% generazione di collegamenti ipertestuali su indice e riferimenti
+\usepackage{hyperref}	% generazione di collegamenti ipertestuali su indice e riferimenti
+\hypersetup{
+    hidelinks,
+    colorlinks = true,
+    urlcolor = {blu},
+    linkcolor = {black},
+    citecolor = {blue}
+}
 \usepackage[all]{hypcap} % per far si che i link ipertestuali alle immagini puntino all'inizio delle stesse e non alla didascalia sottostante
 \usepackage{amsthm}	% per definizioni e teoremi
 \usepackage{amsmath}	% per ``cases'' environment
@@ -28,8 +35,7 @@
 % \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{listings}
-\usepackage[table]{xcolor}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[table, dvipsnames]{xcolor}
 
 \renewcommand\theadalign{bc}
 \renewcommand\theadfont{\ttfamily}
